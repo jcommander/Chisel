@@ -347,7 +347,6 @@ namespace Engine
 
             GameSettings.Settings.Add("resScale", (double)ResolutionScalar);
             GameSettings.Settings.Add("aaMode", (Int64)2);
-            GameSettings.Settings.Add("screenSize", (Int64)(RenderEngine.ValidDisplayModes.FindIndex(e => e == GraphicsDevice.DisplayMode)));
 
             GameSettings.Settings.Add("shadowQual", (Int64)2);
             GameSettings.Settings.Add("shaderQual", (Int64)2);
@@ -375,7 +374,6 @@ namespace Engine
                 }
             });
 
-            RenderEngine.CreateListedOptions();
 
             GameSettings.Settings.Add("masterVol", 1d);
             GameSettings.Settings.Add("sfxVol", 1d);
@@ -384,6 +382,8 @@ namespace Engine
             SoundDevice.CreateListedOptions();
 
             RenderEngine.InitRenderEngine();
+            RenderEngine.CreateListedOptions();
+            GameSettings.Settings.Add("screenSize", (Int64)(RenderEngine.ValidDisplayModes.FindIndex(e => e == GraphicsDevice.DisplayMode)));
             DecalManager.Init();
 
             EnsureCommandsUpdated();
